@@ -10,20 +10,18 @@ func main() {
 	fmt.Println(tgt)
 }
 
+// 隣り合う要素を比較し、入れ替えながら整列する
 func run(tgt []int) {
-	if len(tgt) < 2 {
-		return
+	for n := 0; n < len(tgt); n++ {
+		var swap bool
+		for j := 0; j < len(tgt)-n-1; j++ {
+			if tgt[j] > tgt[j+1] {
+				tgt[j], tgt[j+1] = tgt[j+1], tgt[j]
+				swap = true
+			}
+		}
+		if !swap {
+			break
+		}
 	}
-	compareAndSwap(tgt)
-	run(tgt[:len(tgt)-1])
-}
-
-func compareAndSwap(tgt []int) {
-	if len(tgt) < 2 {
-		return
-	}
-	if tgt[0] > tgt[1] {
-		tgt[0], tgt[1] = tgt[1], tgt[0]
-	}
-	compareAndSwap(tgt[1:])
 }
