@@ -25,8 +25,6 @@ func run(low, high int) bool {
 	mid := (high + low) / 2
 	midv := arr[mid]
 
-	fmt.Println(midv)
-
 	switch {
 	case midv == tgt:
 		return true
