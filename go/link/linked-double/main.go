@@ -1,48 +1,46 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type link[T any] struct {
-	elems []*elem[T]
-}
-
-func length[T any](l link[T]) int {
-	return len(l.elems)
+	root   *elem[T]
+	length int
 }
 
 func first[T any](l link[T]) *elem[T] {
-	if length(l) == 0 {
+	if l.length == 0 {
 		return nil
 	}
-	return l.elems[0]
+	return l.root
 }
 
 func last[T any](l link[T]) *elem[T] {
-	if length(l) == 0 {
+	if l.length == 0 {
 		return nil
 	}
-	return l.elems[length(l)-1]
+	return l.root.prev
 }
 
 func add[T any](l link[T], value T) link[T] {
-	if length(l) == 0 {
+	if l.length == 0 {
 		elem := &elem[T]{
 			value: value,
 		}
 		elem.next = elem
 		elem.prev = elem
-		l.elems = append(l.elems, elem)
+		l.root = elem
 	} else {
 		elem := &elem[T]{
 			value: value,
-			prev:  l.elems[len(l.elems)-1],
-			next:  l.elems[0],
+			prev:  last(l),
+			next:  first(l),
 		}
 		last(l).next = elem
 		first(l).prev = elem
-
-		l.elems = append(l.elems, elem)
 	}
+	l.length++
 	return l
 }
 
