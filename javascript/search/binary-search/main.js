@@ -13,13 +13,14 @@ function search(arr, tgt) {
     }
 
     if (arr[mid] > tgt) {
-        return search(arr.slice(0, mid-1), tgt);
+        return search(arr.slice(0, mid), tgt);
     } else {
         return search(arr.slice(mid), tgt);
     }
 };
 
 console.log(search([1, 3, 100, 1_000], 1_000));
+console.log(search([1, 3, 100, 1_000], 1));
 console.log(search([1, 3], 2));
 console.log(search([1], 2));
 console.log(search([], 2));
