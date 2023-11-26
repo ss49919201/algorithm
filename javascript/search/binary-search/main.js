@@ -7,7 +7,7 @@ function search(arr, tgt) {
         return arr[0] === tgt;
     }
 
-    const mid = Math.round(arr.length / 2)
+    const mid = Math.floor(arr.length / 2)
     if (arr[mid] === tgt) {
         return true;
     }
