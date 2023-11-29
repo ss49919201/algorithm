@@ -1,3 +1,5 @@
+'use strict';
+
 const sort = x => {
     if (x.length <= 1) return x;
 
