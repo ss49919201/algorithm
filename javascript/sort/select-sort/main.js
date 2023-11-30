@@ -20,3 +20,4 @@ const sort = arr => {
 console.log(sort([]));
 console.log(sort([1]));
 console.log(sort([3, 1, 0, 2, -1]));
+console.log(sort([-5, 1, 0, 2, -1]));
